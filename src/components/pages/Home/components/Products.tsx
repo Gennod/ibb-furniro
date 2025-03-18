@@ -16,17 +16,24 @@ export const Products = () => {
 		return (
 			<div className="pt-14">
 				<h2 className="text-center text-4xl font-bold">Our Products</h2>
-				<ul>
+				<ul className="relative grid grid-cols-3 gap-8 px-24">
 					{products.map(product => (
-						<li key={product.id}>
+						<li
+							key={product.id}
+							className="flex flex-col rounded bg-(--color-gray)"
+						>
 							<img
 								src={product.thumbnail}
 								alt={product.title}
 							/>
-							<div>
-								<p>{product.title}</p>
-								<p>{product.description}</p>
-								<div>{product.price}</div>
+							<div className="container flex grow flex-col gap-2 px-4 pt-4 pb-8">
+								<p className="overflow-hidden text-2xl font-semibold text-nowrap overflow-ellipsis">
+									{product.title}
+								</p>
+								<p className="grow text-sm text-ellipsis text-(--color-dark-gray)">
+									{product.description}
+								</p>
+								<div className="text-lg font-semibold">{product.price}$</div>
 							</div>
 						</li>
 					))}
