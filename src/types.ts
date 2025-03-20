@@ -40,3 +40,7 @@ export interface IProducts {
 	products: IProduct[]
 	status: 'idle' | 'succeed' | 'pending' | 'failed'
 }
+
+export interface IPage {
+	currentPage: string
+}

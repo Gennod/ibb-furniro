@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { links } from '../data/header.data'
 
 export const Navigation = () => {
@@ -23,7 +25,7 @@ export const NavItem: React.FC<NavItemProps> = ({ href, title }) => {
 	return (
 		<>
 			<li>
-				<a href={href}>{title}</a>
+				<Link to={href}>{title}</Link>
 			</li>
 		</>
 	)

@@ -7,17 +7,17 @@ export const links = [
 	{
 		id: 2,
 		title: 'Shop',
-		href: ''
+		href: '/shop'
 	},
 	{
 		id: 3,
 		title: 'About',
-		href: ''
+		href: '/about'
 	},
 	{
 		id: 4,
 		title: 'Contact',
-		href: ''
+		href: '/contact'
 	}
 ]
 

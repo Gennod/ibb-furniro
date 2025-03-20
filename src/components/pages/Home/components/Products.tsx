@@ -16,7 +16,7 @@ export const Products = () => {
 		return (
 			<div className="pt-14">
 				<h2 className="text-center text-4xl font-bold">Our Products</h2>
-				<ul className="relative grid grid-cols-3 gap-8 px-24">
+				<ul className="relative grid grid-cols-3 gap-8 px-24 py-10">
 					{products.map(product => (
 						<li
 							key={product.id}
