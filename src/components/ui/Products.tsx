@@ -1,21 +1,28 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
-import { fetchProducts } from '../../../../store/reducers/products'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { fetchProducts } from '../../store/reducers/products'
 
-export const Products = () => {
+interface ProductsProps {
+	isTitle?: boolean
+	limit: number
+}
+
+export const Products: React.FC<ProductsProps> = ({ isTitle, limit }) => {
 	const dispatch = useAppDispatch()
 	const { products, status } = useAppSelector(state => state.products)
 
 	useEffect(() => {
-		dispatch(fetchProducts())
+		dispatch(fetchProducts(limit))
 		console.log(products)
-	}, [])
+	}, [dispatch, limit])
 
 	if (status === 'succeed') {
 		return (
 			<div className="pt-14">
-				<h2 className="text-center text-4xl font-bold">Our Products</h2>
+				{isTitle && (
+					<h2 className="text-center text-4xl font-bold">Our Products</h2>
+				)}
 				<ul className="relative grid grid-cols-3 gap-8 px-24 py-10">
 					{products.map(product => (
 						<li

@@ -5,8 +5,10 @@ import { IProducts } from '../../types'
 
 export const fetchProducts = createAsyncThunk(
 	'products/getAllProducts',
-	async () => {
-		const response = await axios.get('https://dummyjson.com/products?limit=8')
+	async (limit: number) => {
+		const response = await axios.get(
+			`https://dummyjson.com/products?limit=${limit}`
+		)
 
 		return response.data
 	}

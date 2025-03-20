@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import { links } from '../data/header.data'
 
@@ -25,7 +25,14 @@ export const NavItem: React.FC<NavItemProps> = ({ href, title }) => {
 	return (
 		<>
 			<li>
-				<Link to={href}>{title}</Link>
+				<NavLink
+					to={href}
+					className={({ isActive }) =>
+						isActive ? 'text-(--color-primary)' : 'text-black'
+					}
+				>
+					{title}
+				</NavLink>
 			</li>
 		</>
 	)
