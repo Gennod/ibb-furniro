@@ -1,4 +1,4 @@
-import { MyBreadcrumbs } from '../../ui/breadcrumbs'
+import { MyBreadcrumbs } from '../../ui/Breadcrumbs'
 
 const About = () => {
 	return (

@@ -38,7 +38,15 @@ export interface IProduct {
 
 export interface IProducts {
 	products: IProduct[]
+	filteredProducts: IProduct[]
 	status: 'idle' | 'succeed' | 'pending' | 'failed'
+	limit: 8 | 16 | 24
+	currentPage: number
+	sortBy:
+		| 'rating_descending'
+		| 'rating_ascending'
+		| 'price_descending'
+		| 'price_ascending'
 }
 
 export interface IPage {

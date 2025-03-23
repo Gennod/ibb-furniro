@@ -5,17 +5,23 @@ import { fetchProducts } from '../../store/reducers/products'
 
 interface ProductsProps {
 	isTitle?: boolean
-	limit: number
+	fixedLimit?: number
 }
 
-export const Products: React.FC<ProductsProps> = ({ isTitle, limit }) => {
+export const Products: React.FC<ProductsProps> = ({ isTitle, fixedLimit }) => {
 	const dispatch = useAppDispatch()
-	const { products, status } = useAppSelector(state => state.products)
+	const { filteredProducts, status, limit, currentPage } = useAppSelector(
+		state => state.products
+	)
+
+	const startIndex = (currentPage - 1) * limit
+	const endIndex = startIndex + limit
+	const currentProducts = filteredProducts.slice(startIndex, endIndex)
 
 	useEffect(() => {
-		dispatch(fetchProducts(limit))
-		console.log(products)
-	}, [dispatch, limit])
+		dispatch(fetchProducts())
+		console.log(filteredProducts)
+	}, [dispatch, limit, fixedLimit])
 
 	if (status === 'succeed') {
 		return (
@@ -24,7 +30,7 @@ export const Products: React.FC<ProductsProps> = ({ isTitle, limit }) => {
 					<h2 className="text-center text-4xl font-bold">Our Products</h2>
 				)}
 				<ul className="relative grid grid-cols-3 gap-8 px-24 py-10">
-					{products.map(product => (
+					{currentProducts.map(product => (
 						<li
 							key={product.id}
 							className="flex flex-col rounded bg-(--color-gray)"
@@ -41,6 +47,14 @@ export const Products: React.FC<ProductsProps> = ({ isTitle, limit }) => {
 									{product.description}
 								</p>
 								<div className="text-lg font-semibold">{product.price}$</div>
+								<div className="flex items-center justify-between">
+									<ul className="flex gap-5 text-(--color-primary)">
+										{product.tags.map(tag => (
+											<li>{tag}</li>
+										))}
+									</ul>
+									<p className="text-2xl text-yellow-700">{product.rating}</p>
+								</div>
 							</div>
 						</li>
 					))}

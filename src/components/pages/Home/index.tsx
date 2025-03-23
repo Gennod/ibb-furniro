@@ -8,7 +8,7 @@ const Home = () => {
 			<Promo />
 			<Products
 				isTitle={true}
-				limit={8}
+				fixedLimit={8}
 			/>
 		</>
 	)
