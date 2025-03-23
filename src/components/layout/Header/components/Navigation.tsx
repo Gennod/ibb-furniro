@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-import { links } from '../data/header.data'
+import { links } from '../data/constants'
 
 export const Navigation = () => {
 	return (

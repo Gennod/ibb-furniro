@@ -6,6 +6,7 @@
 	--color-secondary: #fff3e3;
 	--color-gray: #f4f5f7;
 	--color-dark-gray: #898989;
+	--color-light-gray: #9f9f9f;
 }
 
 :root {
@@ -14,4 +15,14 @@
 
 body {
 	margin: 0;
+}
+
+.my-underline::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -5px;
+	width: 100%;
+	height: 2px;
+	background: #000;
 }

@@ -1,4 +1,4 @@
-import { icons } from '../data/header.data'
+import { icons } from '../data/constants'
 
 export const Menu = () => {
 	return (

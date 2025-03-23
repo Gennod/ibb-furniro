@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import Footer from './components/layout/Footer'
 import Header from './components/layout/Header'
 import About from './components/pages/About'
 import Home from './components/pages/Home'
@@ -33,6 +34,7 @@ createRoot(document.getElementById('root')!).render(
 						element={<About />}
 					/>
 				</Routes>
+				<Footer />
 			</BrowserRouter>
 		</Provider>
 	</StrictMode>
