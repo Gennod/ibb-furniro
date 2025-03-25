@@ -13,8 +13,8 @@ const Footer = () => {
 					</address>
 				</div>
 				<div className="flex justify-center gap-16">
-					{footerData.map(({ heading, links }) => (
-						<div>
+					{footerData.map(({ heading, links }, idx) => (
+						<div key={idx}>
 							<h3 className="mb-14 text-(--color-light-gray)">{heading}</h3>
 							<ul className="flex flex-col gap-11">
 								{links.map(({ id, title, href }) => (

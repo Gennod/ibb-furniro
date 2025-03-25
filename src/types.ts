@@ -42,6 +42,7 @@ export interface IProducts {
 	status: 'idle' | 'succeed' | 'pending' | 'failed'
 	limit: 8 | 16 | 24
 	currentPage: number
+	tagFilter: string[]
 	sortBy:
 		| 'rating_descending'
 		| 'rating_ascending'
