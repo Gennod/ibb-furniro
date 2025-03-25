@@ -1,8 +1,8 @@
-import { Cpu, Palette } from 'lucide-react'
+import { Cpu, Figma, Github, Palette } from 'lucide-react'
 
 import { MyBreadcrumbs } from '../../ui/breadcrumbs'
 
-const items = [
+const tech = [
 	{
 		icon: <Cpu />,
 		title: 'React + Vite'
@@ -22,6 +22,19 @@ const items = [
 	{
 		icon: <Palette />,
 		title: 'Lucide react'
+	}
+]
+
+const links = [
+	{
+		href: 'https://www.figma.com/community/file/1252561852327562039',
+		title: 'Макет Figma',
+		icon: <Figma />
+	},
+	{
+		href: 'https://github.com/Gennod/ibb-furniro',
+		title: 'Исходный код',
+		icon: <Github />
 	}
 ]
 
@@ -48,9 +61,9 @@ const About = () => {
 							</a>
 						</div>
 					</div>
-					<p className="mt-5 text-2xl font-semibold">Технологический стек</p>
+					<h3 className="mt-5 text-2xl font-semibold">Технологический стек</h3>
 					<ul className="mt-2">
-						{items.map((item, idx) => (
+						{tech.map((item, idx) => (
 							<li
 								key={idx}
 								className="flex gap-1"
@@ -60,6 +73,21 @@ const About = () => {
 							</li>
 						))}
 					</ul>
+					<h3 className="mt-5 text-2xl font-semibold">
+						Дизайн и сходный код проекта
+					</h3>
+					<div className="mt-5 flex gap-5">
+						{links.map(({ title, href, icon }) => (
+							<a
+								className="flex gap-2 rounded border px-3 py-1.5 transition hover:scale-105"
+								href={href}
+								target="_blank"
+							>
+								{icon}
+								{title}
+							</a>
+						))}
+					</div>
 				</div>
 			</div>
 		</div>
