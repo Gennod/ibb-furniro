@@ -12,6 +12,7 @@ export const AboutDesign = () => {
 						className="flex gap-2 rounded border px-3 py-1.5 transition hover:scale-105"
 						href={href}
 						target="_blank"
+						key={title}
 					>
 						{icon}
 						{title}
