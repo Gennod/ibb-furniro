@@ -1,10 +1,10 @@
 import { SlidersHorizontal } from 'lucide-react'
 
 import { useAppSelector } from '../../../store/hooks'
-import { MyBreadcrumbs } from '../../ui/Breadcrumbs'
 import ProductsPagination from '../../ui/Pagination'
 import { Products } from '../../ui/Products'
 import BasicSelect from '../../ui/Select'
+import { MyBreadcrumbs } from '../../ui/breadcrumbs'
 
 const Shop = () => {
 	const { products, filteredProducts, limit, currentPage } = useAppSelector(
@@ -26,7 +26,7 @@ const Shop = () => {
 			<div className="pb-5">
 				<div className="flex items-center justify-between bg-(--color-primary)/20 px-24 py-10">
 					<div className="flex gap-7">
-						<button className="flex cursor-pointer gap-2">
+						<button className="flex gap-2">
 							<SlidersHorizontal /> <p>Filter</p>
 						</button>
 						<div className="w-0.5 bg-neutral-400"></div>
