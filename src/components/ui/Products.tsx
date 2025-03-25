@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect } from 'react'
 
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { fetchProducts } from '../../store/reducers/products'
+import { fetchProducts, setLimit } from '../../store/reducers/products'
 
 import { ProductItem } from './ProductsComponents/ProductItem'
 import { ProductSkeleton } from './ProductsComponents/ProductSkeleton'
@@ -9,17 +9,22 @@ import { ProductSkeleton } from './ProductsComponents/ProductSkeleton'
 interface ProductsProps {
 	isTitle?: boolean
 	fixedLimit?: number
+	isHomePage?: boolean
 }
 
-export const Products: React.FC<ProductsProps> = ({ isTitle, fixedLimit }) => {
+export const Products: React.FC<ProductsProps> = ({
+	isTitle,
+	fixedLimit,
+	isHomePage
+}) => {
 	const dispatch = useAppDispatch()
-	const { filteredProducts, status, limit, currentPage } = useAppSelector(
-		state => state.products
-	)
+	const { filteredProducts, products, status, limit, currentPage } =
+		useAppSelector(state => state.products)
+	const productsToShow = isHomePage ? products : filteredProducts
 
 	const startIndex = (currentPage - 1) * limit
 	const endIndex = startIndex + limit
-	const currentProducts = filteredProducts.slice(startIndex, endIndex)
+	const currentProducts = productsToShow.slice(startIndex, endIndex)
 
 	useLayoutEffect(() => {
 		window.scrollTo(0, 0)
@@ -27,6 +32,11 @@ export const Products: React.FC<ProductsProps> = ({ isTitle, fixedLimit }) => {
 
 	useEffect(() => {
 		dispatch(fetchProducts())
+		console.log(filteredProducts)
+
+		if (isHomePage) {
+			dispatch(setLimit(8))
+		}
 	}, [dispatch, limit, fixedLimit])
 
 	if (status === 'succeed') {
@@ -46,6 +56,7 @@ export const Products: React.FC<ProductsProps> = ({ isTitle, fixedLimit }) => {
 							price={product.price}
 							rating={product.rating}
 							tags={product.tags}
+							disableTags={isHomePage}
 						/>
 					))}
 				</ul>

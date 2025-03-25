@@ -1,5 +1,8 @@
+import { Star } from 'lucide-react'
+
 import { useAppDispatch } from '../../../store/hooks'
 import { filterByTag } from '../../../store/reducers/products'
+import { getTagColor } from '../../../utils/getTagColor'
 
 interface ProductItemProps {
 	id: number
@@ -9,6 +12,7 @@ interface ProductItemProps {
 	price: number
 	rating: number
 	tags: string[]
+	disableTags?: boolean
 }
 
 export const ProductItem: React.FC<ProductItemProps> = ({
@@ -17,7 +21,8 @@ export const ProductItem: React.FC<ProductItemProps> = ({
 	description,
 	price,
 	rating,
-	tags
+	tags,
+	disableTags
 }) => {
 	const dispatch = useAppDispatch()
 	const handleTagClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -44,20 +49,25 @@ export const ProductItem: React.FC<ProductItemProps> = ({
 				</p>
 				<div className="text-lg font-semibold">{price}$</div>
 				<div className="flex items-center justify-between">
-					<ul className="flex gap-5 text-(--color-primary)">
-						{tags.map(tag => (
-							<li key={tag}>
-								<button
-									onClick={handleTagClick}
-									className="cursor-pointer"
-									value={tag}
-								>
-									{tag}
-								</button>
-							</li>
-						))}
-					</ul>
-					<p className="text-2xl text-yellow-700">{rating}</p>
+					{!disableTags && (
+						<ul className="flex flex-wrap gap-2 text-(--color-primary)">
+							{tags.map(tag => (
+								<li key={tag}>
+									<button
+										onClick={handleTagClick}
+										value={tag}
+										className={`cursor-pointer rounded-full px-2 py-1 text-xs ${getTagColor(tag)}`}
+									>
+										{tag}
+									</button>
+								</li>
+							))}
+						</ul>
+					)}
+					<p className="flex items-center gap-1 text-2xl text-yellow-700">
+						<Star />
+						{rating}
+					</p>
 				</div>
 			</div>
 		</li>

@@ -9,6 +9,7 @@ const Home = () => {
 			<Products
 				isTitle={true}
 				fixedLimit={8}
+				isHomePage={true}
 			/>
 		</>
 	)
