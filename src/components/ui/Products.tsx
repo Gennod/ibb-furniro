@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { fetchProducts } from '../../store/reducers/products'
@@ -20,6 +20,10 @@ export const Products: React.FC<ProductsProps> = ({ isTitle, fixedLimit }) => {
 	const startIndex = (currentPage - 1) * limit
 	const endIndex = startIndex + limit
 	const currentProducts = filteredProducts.slice(startIndex, endIndex)
+
+	useLayoutEffect(() => {
+		window.scrollTo(0, 0)
+	}, [currentPage])
 
 	useEffect(() => {
 		dispatch(fetchProducts())

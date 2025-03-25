@@ -12,7 +12,6 @@ interface ProductItemProps {
 }
 
 export const ProductItem: React.FC<ProductItemProps> = ({
-	id,
 	thumbnail,
 	title,
 	description,
