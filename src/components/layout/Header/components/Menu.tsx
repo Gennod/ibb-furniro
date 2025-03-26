@@ -19,7 +19,7 @@ export const Menu = () => {
 			<li>
 				<button className="cursor-pointer">
 					<Badge
-						color="secondary"
+						color="primary"
 						badgeContent={cartProducts.length}
 					>
 						<ShoppingCart />
