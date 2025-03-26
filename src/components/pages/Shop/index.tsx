@@ -4,6 +4,8 @@ import { MyBreadcrumbs } from '../../ui/breadcrumbs'
 
 import { ShopFilter } from './components/ShopFilter'
 
+// TODO: Сделать множественные теги. Сейчас при добавлении больше двух тегов они не работают
+
 const Shop = () => {
 	return (
 		<div>

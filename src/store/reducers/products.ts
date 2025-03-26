@@ -15,9 +15,14 @@ export const fetchProducts = createAsyncThunk(
 const applyFiltersAndSorting = (state: IProducts) => {
 	const filtered =
 		state.tagFilter.length > 0
-			? state.products.filter(product =>
-					product.tags?.some(tag => state.tagFilter.includes(tag))
-				)
+			? state.products.filter(product => {
+					if (!product.tags || product.tags.length === 0) return false
+
+					const productTags = product.tags.map(t => t.toLowerCase())
+					const filterTags = state.tagFilter.map(t => t.toLowerCase())
+
+					return filterTags.every(tag => productTags.includes(tag))
+				})
 			: [...state.products]
 
 	const sorted = [...filtered]
