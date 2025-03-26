@@ -36,6 +36,11 @@ export interface IProduct {
 	thumbnail: string
 }
 
+export interface ICartItem {
+	product: IProduct
+	quantity: number
+}
+
 export interface IProducts {
 	products: IProduct[]
 	filteredProducts: IProduct[]
@@ -43,6 +48,8 @@ export interface IProducts {
 	limit: 8 | 16 | 24
 	currentPage: number
 	tagFilter: string[]
+	cartProducts: ICartItem[]
+	currentProduct: IProduct | undefined
 	sortBy:
 		| 'rating_descending'
 		| 'rating_ascending'

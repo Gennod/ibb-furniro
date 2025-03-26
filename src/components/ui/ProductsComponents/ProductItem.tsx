@@ -1,4 +1,5 @@
 import { Star } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 import { useAppDispatch } from '../../../store/hooks'
 import { filterByTag } from '../../../store/reducers/products'
@@ -17,6 +18,7 @@ interface ProductItemProps {
 
 export const ProductItem: React.FC<ProductItemProps> = ({
 	thumbnail,
+	id,
 	title,
 	description,
 	price,
@@ -35,7 +37,7 @@ export const ProductItem: React.FC<ProductItemProps> = ({
 				<img
 					src={thumbnail}
 					alt={title}
-					className="h-full w-full object-cover"
+					className="lazy-img h-full w-full object-cover"
 					loading="lazy"
 					onLoad={e => e.currentTarget.setAttribute('loaded', 'true')}
 				/>
@@ -69,6 +71,12 @@ export const ProductItem: React.FC<ProductItemProps> = ({
 						{rating}
 					</p>
 				</div>
+				<Link
+					to={`/product/${id}`}
+					className="mt-4 inline-block rounded bg-gray-200 px-4 py-2 hover:bg-gray-300"
+				>
+					Посмотреть
+				</Link>
 			</div>
 		</li>
 	)

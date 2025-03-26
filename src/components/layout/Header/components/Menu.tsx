@@ -1,6 +1,12 @@
+import { Badge } from '@mui/material'
+import { ShoppingCart } from 'lucide-react'
+
+import { useAppSelector } from '../../../../store/hooks'
 import { icons } from '../data/constants'
 
 export const Menu = () => {
+	const { cartProducts } = useAppSelector(state => state.products)
+
 	return (
 		<ul className="flex items-center gap-12">
 			{icons.map(icon => (
@@ -10,6 +16,16 @@ export const Menu = () => {
 					alt={icon.iconAlt}
 				/>
 			))}
+			<li>
+				<button className="cursor-pointer">
+					<Badge
+						color="secondary"
+						badgeContent={cartProducts.length}
+					>
+						<ShoppingCart />
+					</Badge>
+				</button>
+			</li>
 		</ul>
 	)
 }

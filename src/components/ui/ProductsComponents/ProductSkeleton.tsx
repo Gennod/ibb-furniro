@@ -1,69 +1,71 @@
 import { Skeleton } from '@mui/material'
 
-import { useAppSelector } from '../../../store/hooks'
-
-interface ProductSkeletonProps {
-	isTitle?: boolean
-	fixedLimit?: number
-}
-
-export const ProductSkeleton: React.FC<ProductSkeletonProps> = ({
-	isTitle,
-	fixedLimit
-}) => {
-	const { limit } = useAppSelector(state => state.products)
-
+export const ProductSkeleton = () => {
 	return (
-		<div className="pt-14">
-			{isTitle && (
-				<h2 className="text-center text-4xl font-bold">Our Products</h2>
-			)}
-			<ul className="relative grid grid-cols-3 gap-8 px-24 py-10">
-				{Array.from({ length: fixedLimit || limit }).map((_, index) => (
-					<li
-						key={index}
-						className="flex flex-col rounded bg-(--color-gray)"
-					>
-						<div className="h-48 w-full">
-							<Skeleton
-								variant="rectangular"
-								width="100%"
-								height="100%"
-								sx={{ bgcolor: 'grey.500' }}
-							/>
-						</div>
-						<div className="container flex grow flex-col gap-2 px-4 pt-4 pb-8">
-							<Skeleton
-								variant="text"
-								width="80%"
-								sx={{ bgcolor: 'grey.500', fontSize: '1.5rem' }}
-							/>
-							<Skeleton
-								variant="text"
-								width="100%"
-								sx={{ bgcolor: 'grey.500' }}
-							/>
-							<Skeleton
-								variant="text"
-								width="40%"
-								sx={{ bgcolor: 'grey.500' }}
-							/>
-							<div className="flex items-center justify-between">
-								<Skeleton
-									variant="text"
-									width="60%"
-									sx={{ bgcolor: 'grey.500' }}
-								/>
-								<Skeleton
-									variant="text"
-									width="20%"
-									sx={{ bgcolor: 'grey.500' }}
-								/>
-							</div>
-						</div>
-					</li>
-				))}
-			</ul>
+		<div className="mx-auto flex max-w-7xl flex-col justify-center gap-8 px-4 py-8 sm:flex-row sm:gap-20 sm:px-8 sm:py-12">
+			<div className="w-full sm:min-w-80">
+				<Skeleton
+					variant="rectangular"
+					width="100%"
+					height={320}
+					sx={{ bgcolor: 'grey.300' }}
+				/>
+			</div>
+
+			<div className="w-full sm:flex-1">
+				<Skeleton
+					variant="text"
+					width="80%"
+					height={48}
+					sx={{ bgcolor: 'grey.300', fontSize: '2rem' }}
+				/>
+
+				<Skeleton
+					variant="text"
+					width="30%"
+					height={32}
+					sx={{ bgcolor: 'grey.300', fontSize: '1.5rem', mt: 1 }}
+				/>
+
+				<div className="my-4">
+					<Skeleton
+						variant="rectangular"
+						width={120}
+						height={24}
+						sx={{ bgcolor: 'grey.300' }}
+					/>
+				</div>
+
+				<div className="mb-5 space-y-2">
+					<Skeleton
+						variant="text"
+						width="100%"
+						sx={{ bgcolor: 'grey.300' }}
+					/>
+					<Skeleton
+						variant="text"
+						width="95%"
+						sx={{ bgcolor: 'grey.300' }}
+					/>
+					<Skeleton
+						variant="text"
+						width="90%"
+						sx={{ bgcolor: 'grey.300' }}
+					/>
+					<Skeleton
+						variant="text"
+						width="85%"
+						sx={{ bgcolor: 'grey.300' }}
+					/>
+				</div>
+
+				<Skeleton
+					variant="rectangular"
+					width={120}
+					height={40}
+					sx={{ bgcolor: 'grey.300' }}
+				/>
+			</div>
 		</div>
 	)
 }

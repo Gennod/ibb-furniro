@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { fetchProducts, setLimit } from '../../store/reducers/products'
 
 import { ProductItem } from './ProductsComponents/ProductItem'
-import { ProductSkeleton } from './ProductsComponents/ProductSkeleton'
+import { ProductsSkeleton } from './ProductsComponents/ProductsSkeleton'
 
 interface ProductsProps {
 	isTitle?: boolean
@@ -64,7 +64,7 @@ export const Products: React.FC<ProductsProps> = ({
 		)
 	}
 	return (
-		<ProductSkeleton
+		<ProductsSkeleton
 			isTitle={isTitle}
 			fixedLimit={fixedLimit}
 		/>

@@ -1,13 +1,22 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import { IProducts } from '../../types'
+import { IProduct, IProducts } from '../../types'
 
 export const fetchProducts = createAsyncThunk(
 	'products/getAllProducts',
 	async () => {
 		const response = await axios.get(`https://dummyjson.com/products?limit=194`)
 
+		return response.data
+	}
+)
+export const fetchProductById = createAsyncThunk(
+	'products/getProductById',
+	async (productId: string) => {
+		const response = await axios.get(
+			`https://dummyjson.com/products/${productId}`
+		)
 		return response.data
 	}
 )
@@ -50,10 +59,12 @@ const applyFiltersAndSorting = (state: IProducts) => {
 const initialState: IProducts = {
 	products: [],
 	filteredProducts: [],
+	cartProducts: [],
 	status: 'idle',
 	limit: 8,
 	sortBy: 'rating_descending',
 	currentPage: 1,
+	currentProduct: undefined,
 	tagFilter: []
 }
 
@@ -66,7 +77,21 @@ const productSlice = createSlice({
 			state.currentPage = 1
 			applyFiltersAndSorting(state)
 		},
+		addToCart: (
+			state,
+			action: PayloadAction<{ product: IProduct; quantity: number }>
+		) => {
+			const { product, quantity } = action.payload
+			const existingItem = state.cartProducts.find(
+				item => item.product.id === product.id
+			)
 
+			if (existingItem) {
+				existingItem.quantity += quantity
+			} else {
+				state.cartProducts.push({ product, quantity })
+			}
+		},
 		filterByTag: (state, action) => {
 			if (!state.tagFilter.includes(action.payload)) {
 				state.tagFilter.push(action.payload)
@@ -104,6 +129,16 @@ const productSlice = createSlice({
 			.addCase(fetchProducts.rejected, state => {
 				state.status = 'failed'
 			})
+			.addCase(fetchProductById.fulfilled, (state, action) => {
+				state.currentProduct = action.payload
+				state.status = 'succeed'
+			})
+			.addCase(fetchProductById.pending, state => {
+				state.status = 'pending'
+			})
+			.addCase(fetchProductById.rejected, state => {
+				state.status = 'failed'
+			})
 	}
 })
 
@@ -112,6 +147,7 @@ export const {
 	filterProducts,
 	setCurrentPage,
 	filterByTag,
-	deleteTag
+	deleteTag,
+	addToCart
 } = productSlice.actions
 export const productReducer = productSlice.reducer
