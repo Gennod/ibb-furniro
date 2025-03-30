@@ -1,5 +1,6 @@
 import { Badge } from '@mui/material'
 import { ShoppingCart } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 import { useAppSelector } from '../../../../store/hooks'
 import { icons } from '../data/constants'
@@ -16,15 +17,18 @@ export const Menu = () => {
 					alt={icon.iconAlt}
 				/>
 			))}
-			<li>
-				<button className="cursor-pointer">
+			<li className="flex items-center">
+				<Link
+					to="/cart"
+					className="cursor-pointer"
+				>
 					<Badge
 						color="primary"
 						badgeContent={cartProducts.length}
 					>
 						<ShoppingCart />
 					</Badge>
-				</button>
+				</Link>
 			</li>
 		</ul>
 	)
@@ -37,9 +41,10 @@ interface MenuItemProps {
 
 export const MenuItem: React.FC<MenuItemProps> = ({ src, alt }) => {
 	return (
-		<li>
+		<li className="flex items-center">
 			<button className="cursor-pointer">
 				<img
+					className="h-6 w-6"
 					src={src}
 					alt={alt}
 				/>

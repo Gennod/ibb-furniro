@@ -57,6 +57,7 @@ export const Products: React.FC<ProductsProps> = ({
 							rating={product.rating}
 							tags={product.tags}
 							disableTags={isHomePage}
+							discountPercentage={product.discountPercentage}
 						/>
 					))}
 				</ul>

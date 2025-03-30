@@ -38,7 +38,12 @@ export const ProductPage = () => {
 	if (status === 'succeed') {
 		return (
 			<div className="mx-auto flex max-w-7xl justify-center gap-20 py-12">
-				<div className="min-w-80">
+				<div className="relative min-w-80">
+					{product.discountPercentage > 0 && (
+						<div className="absolute top-1 right-1 z-10 rounded-full bg-red-500 px-2 py-1 text-white">
+							-{product.discountPercentage}%
+						</div>
+					)}
 					<img
 						className="lazy-img"
 						loading="lazy"
@@ -49,9 +54,17 @@ export const ProductPage = () => {
 				</div>
 				<div>
 					<h2 className="text-4xl">{product.title}</h2>
-					<p className="mt-1 text-2xl text-(--color-light-gray)">
-						{product.price} $
-					</p>
+					<div className="flex items-center gap-5">
+						<div className="text-lg font-semibold">
+							{(product.price * (1 - product.discountPercentage / 100)).toFixed(
+								2
+							)}
+							$
+						</div>
+						<div className="text-sm text-(--color-light-gray) line-through">
+							{product.price}$
+						</div>
+					</div>
 					<Rating
 						className="my-4"
 						name="half-rating-read"

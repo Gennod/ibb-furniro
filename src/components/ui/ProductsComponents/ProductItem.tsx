@@ -14,6 +14,7 @@ interface ProductItemProps {
 	rating: number
 	tags: string[]
 	disableTags?: boolean
+	discountPercentage: number
 }
 
 export const ProductItem: React.FC<ProductItemProps> = ({
@@ -24,7 +25,8 @@ export const ProductItem: React.FC<ProductItemProps> = ({
 	price,
 	rating,
 	tags,
-	disableTags
+	disableTags,
+	discountPercentage
 }) => {
 	const dispatch = useAppDispatch()
 	const handleTagClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -32,7 +34,12 @@ export const ProductItem: React.FC<ProductItemProps> = ({
 	}
 
 	return (
-		<li className="flex flex-col rounded bg-(--color-gray)">
+		<li className="relative flex flex-col rounded bg-(--color-gray)">
+			{discountPercentage > 0 && (
+				<div className="absolute top-1 right-1 z-10 rounded-full bg-red-500 px-2 py-1 text-white">
+					-{discountPercentage}%
+				</div>
+			)}
 			<div className="h-48 w-full overflow-hidden">
 				<img
 					src={thumbnail}
@@ -49,7 +56,14 @@ export const ProductItem: React.FC<ProductItemProps> = ({
 				<p className="grow text-sm text-ellipsis text-(--color-dark-gray)">
 					{description}
 				</p>
-				<div className="text-lg font-semibold">{price}$</div>
+				<div className="flex items-center gap-5">
+					<div className="text-lg font-semibold">
+						{(price * (1 - discountPercentage / 100)).toFixed(2)}$
+					</div>
+					<div className="text-sm text-(--color-light-gray) line-through">
+						{price}$
+					</div>
+				</div>
 				<div className="flex items-center justify-between">
 					{!disableTags && (
 						<ul className="flex flex-wrap gap-2 text-(--color-primary)">

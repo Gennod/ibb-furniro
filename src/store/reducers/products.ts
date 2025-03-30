@@ -92,6 +92,12 @@ const productSlice = createSlice({
 				state.cartProducts.push({ product, quantity })
 			}
 		},
+		deleteFromCart: (state, action: PayloadAction<number>) => {
+			const productId = action.payload
+			state.cartProducts = state.cartProducts.filter(
+				item => item.product.id !== productId
+			)
+		},
 		filterByTag: (state, action) => {
 			if (!state.tagFilter.includes(action.payload)) {
 				state.tagFilter.push(action.payload)
@@ -148,6 +154,7 @@ export const {
 	setCurrentPage,
 	filterByTag,
 	deleteTag,
-	addToCart
+	addToCart,
+	deleteFromCart
 } = productSlice.actions
 export const productReducer = productSlice.reducer

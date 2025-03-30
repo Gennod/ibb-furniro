@@ -36,10 +36,5 @@ export const icons = [
 		id: 3,
 		iconSrc: '/header/heart.svg',
 		iconAlt: 'heart'
-	},
-	{
-		id: 4,
-		iconSrc: '/header/cart.svg',
-		iconAlt: 'cart'
 	}
 ]

@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './components/layout/Footer'
 import Header from './components/layout/Header'
 import About from './components/pages/About'
+import { Cart } from './components/pages/Cart'
 import Contact from './components/pages/Contact'
 import Home from './components/pages/Home'
 import { ProductPage } from './components/pages/ProductPage/ProductPage'
@@ -57,6 +58,10 @@ createRoot(document.getElementById('root')!).render(
 						<Route
 							path="/product/:productId"
 							element={<ProductPage />}
+						/>
+						<Route
+							path="/cart"
+							element={<Cart />}
 						/>
 					</Routes>
 					<Footer />

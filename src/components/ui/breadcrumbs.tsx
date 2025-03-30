@@ -21,10 +21,12 @@ export const MyBreadcrumbs = () => {
 		'/shop': string
 		'/about': string
 		'/contact': string
+		'/cart': string
 	} = {
 		'/shop': 'Shop',
 		'/about': 'About',
-		'/contact': 'Contact'
+		'/contact': 'Contact',
+		'/cart': 'Cart'
 	}
 
 	const breadcrumbs = [
