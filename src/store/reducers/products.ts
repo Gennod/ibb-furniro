@@ -105,7 +105,18 @@ const productSlice = createSlice({
 				applyFiltersAndSorting(state)
 			}
 		},
-
+		updateQuantity: (
+			state,
+			action: PayloadAction<{ productId: number; quantity: number }>
+		) => {
+			const { productId, quantity } = action.payload
+			const item = state.cartProducts.find(
+				item => item.product.id === productId
+			)
+			if (item) {
+				item.quantity = quantity
+			}
+		},
 		deleteTag: (state, action) => {
 			state.tagFilter = state.tagFilter.filter(tag => tag !== action.payload)
 			state.currentPage = 1
@@ -155,6 +166,7 @@ export const {
 	filterByTag,
 	deleteTag,
 	addToCart,
-	deleteFromCart
+	deleteFromCart,
+	updateQuantity
 } = productSlice.actions
 export const productReducer = productSlice.reducer

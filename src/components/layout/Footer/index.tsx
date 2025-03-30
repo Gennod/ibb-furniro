@@ -46,7 +46,7 @@ const Footer = () => {
 				</div>
 			</div>
 			<div className="border-t-2 border-neutral-200 pt-9">
-				2023 furino. All rights reverved | Made by Ivan Blednov
+				2025 furino. All rights reverved | Made by Ivan Blednov
 			</div>
 		</div>
 	)

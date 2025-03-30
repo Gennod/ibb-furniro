@@ -9,6 +9,14 @@
 	--color-light-gray: #9f9f9f;
 }
 
+@layer base {
+	input[type='number']::-webkit-inner-spin-button,
+	input[type='number']::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+}
+
 :root {
 	font-family: 'Poppins', sans-serif;
 }

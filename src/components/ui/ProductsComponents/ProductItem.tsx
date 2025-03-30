@@ -85,12 +85,14 @@ export const ProductItem: React.FC<ProductItemProps> = ({
 						{rating}
 					</p>
 				</div>
-				<Link
-					to={`/product/${id}`}
-					className="mt-4 inline-block rounded bg-gray-200 px-4 py-2 hover:bg-gray-300"
-				>
-					Посмотреть
-				</Link>
+				<div className="mt-4 flex items-center justify-center gap-5">
+					<Link
+						to={`/product/${id}`}
+						className="rounded bg-gray-200 px-4 py-2 hover:bg-gray-300"
+					>
+						Посмотреть
+					</Link>
+				</div>
 			</div>
 		</li>
 	)
