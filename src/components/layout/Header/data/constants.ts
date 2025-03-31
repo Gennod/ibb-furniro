@@ -29,11 +29,6 @@ export const icons = [
 	},
 	{
 		id: 2,
-		iconSrc: '/header/search.svg',
-		iconAlt: 'search'
-	},
-	{
-		id: 3,
 		iconSrc: '/header/heart.svg',
 		iconAlt: 'heart'
 	}

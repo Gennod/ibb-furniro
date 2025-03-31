@@ -1,12 +1,19 @@
 import { Badge } from '@mui/material'
-import { ShoppingCart } from 'lucide-react'
+import { Search, ShoppingCart } from 'lucide-react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useAppSelector } from '../../../../store/hooks'
+import SearchField from '../../../ui/SearchField'
 import { icons } from '../data/constants'
 
 export const Menu = () => {
-	const { cartProducts } = useAppSelector(state => state.products)
+	const { cartProducts, products } = useAppSelector(state => state.products)
+	const [isSearchOpen, setIsSearchOpen] = useState(false)
+
+	const toggleSearch = () => {
+		setIsSearchOpen(!isSearchOpen)
+	}
 
 	return (
 		<ul className="flex items-center gap-12">
@@ -17,6 +24,21 @@ export const Menu = () => {
 					alt={icon.iconAlt}
 				/>
 			))}
+			<li
+				className={`flex items-center overflow-hidden ${isSearchOpen ? 'grow' : ''}`}
+			>
+				{isSearchOpen ? (
+					<SearchField handleInputBlur={toggleSearch} />
+				) : (
+					<button
+						key="search-button"
+						onClick={toggleSearch}
+						className="cursor-pointer"
+					>
+						<Search className="h-6 w-6" />
+					</button>
+				)}
+			</li>
 			<li className="flex items-center">
 				<Link
 					to="/cart"

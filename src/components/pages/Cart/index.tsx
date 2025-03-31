@@ -119,7 +119,7 @@ export const Cart = () => {
 								</div>
 								<button
 									onClick={() => handleDeleteProduct(product.id)}
-									className="justify-self-end"
+									className="cursor-pointer justify-self-end"
 								>
 									<Trash color="#b88e2f" />
 								</button>
