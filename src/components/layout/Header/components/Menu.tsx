@@ -34,15 +34,6 @@ export const Menu = () => {
 				)}
 			</li>
 			<li className="flex items-center">
-				<button className="cursor-pointer">
-					<img
-						className="h-6 w-6"
-						src="/header/heart.svg"
-						alt="heart"
-					/>
-				</button>
-			</li>
-			<li className="flex items-center">
 				<Link
 					to="/cart"
 					className="cursor-pointer"
