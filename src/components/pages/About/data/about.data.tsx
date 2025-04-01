@@ -14,6 +14,10 @@ export const tech = [
 		title: 'Redux + RTK'
 	},
 	{
+		icon: <Cpu />,
+		title: 'React Hook Forms'
+	},
+	{
 		icon: <Palette />,
 		title: 'Tailwind'
 	},

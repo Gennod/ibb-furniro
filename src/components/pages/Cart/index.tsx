@@ -8,7 +8,7 @@ import {
 } from '../../../store/reducers/products'
 import { MyBreadcrumbs } from '../../ui/breadcrumbs'
 
-export const Cart = () => {
+const Cart = () => {
 	const { cartProducts } = useAppSelector(state => state.products)
 	const [inputValues, setInputValues] = useState<{ [key: number]: string }>({})
 	const dispatch = useAppDispatch()
@@ -172,3 +172,4 @@ export const Cart = () => {
 		</>
 	)
 }
+export default Cart

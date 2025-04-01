@@ -1,19 +1,23 @@
-import { ThemeProvider, createTheme } from '@mui/material'
-import { StrictMode } from 'react'
+import { CircularProgress, ThemeProvider, createTheme } from '@mui/material'
+import React, { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import Footer from './components/layout/Footer'
-import Header from './components/layout/Header'
-import About from './components/pages/About'
-import { Cart } from './components/pages/Cart'
-import Contact from './components/pages/Contact'
-import Home from './components/pages/Home'
-import { ProductPage } from './components/pages/ProductPage/ProductPage'
-import Shop from './components/pages/Shop'
 import './index.css'
 import { store } from './store'
+
+const Footer = React.lazy(() => import('./components/layout/Footer'))
+const Header = React.lazy(() => import('./components/layout/Header'))
+
+const About = React.lazy(() => import('./components/pages/About'))
+const Shop = React.lazy(() => import('./components/pages/Shop'))
+const Home = React.lazy(() => import('./components/pages/Home'))
+const Cart = React.lazy(() => import('./components/pages/Cart'))
+const Contact = React.lazy(() => import('./components/pages/Contact'))
+const ProductPage = React.lazy(
+	() => import('./components/pages/ProductPage/ProductPage')
+)
 
 const theme = createTheme({
 	palette: {
@@ -33,38 +37,49 @@ createRoot(document.getElementById('root')!).render(
 		<Provider store={store}>
 			<ThemeProvider theme={theme}>
 				<BrowserRouter>
-					<Header />
-					<Routes>
-						<Route
-							path="/"
-							element={
-								<main>
-									<Home />
-								</main>
-							}
-						/>
-						<Route
-							path="/shop"
-							element={<Shop />}
-						/>
-						<Route
-							path="/about"
-							element={<About />}
-						/>
-						<Route
-							path="/contact"
-							element={<Contact />}
-						/>
-						<Route
-							path="/product/:productId"
-							element={<ProductPage />}
-						/>
-						<Route
-							path="/cart"
-							element={<Cart />}
-						/>
-					</Routes>
-					<Footer />
+					<Suspense
+						fallback={
+							<div className="flex h-screen items-center justify-center">
+								<CircularProgress
+									size={120}
+									thickness={4}
+								/>
+							</div>
+						}
+					>
+						<Header />
+						<Routes>
+							<Route
+								path="/"
+								element={
+									<main>
+										<Home />
+									</main>
+								}
+							/>
+							<Route
+								path="/shop"
+								element={<Shop />}
+							/>
+							<Route
+								path="/about"
+								element={<About />}
+							/>
+							<Route
+								path="/contact"
+								element={<Contact />}
+							/>
+							<Route
+								path="/product/:productId"
+								element={<ProductPage />}
+							/>
+							<Route
+								path="/cart"
+								element={<Cart />}
+							/>
+						</Routes>
+						<Footer />
+					</Suspense>
 				</BrowserRouter>
 			</ThemeProvider>
 		</Provider>

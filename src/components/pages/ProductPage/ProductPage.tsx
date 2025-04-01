@@ -9,7 +9,7 @@ import { getTagColor } from '../../../utils/getTagColor'
 import ProductBadge from '../../ui/ProductBadge'
 import { ProductSkeleton } from '../../ui/ProductsComponents/ProductSkeleton'
 
-export const ProductPage = () => {
+const ProductPage = () => {
 	const { productId } = useParams<{ productId: string }>()
 	const product = useAppSelector(
 		state =>
@@ -122,3 +122,4 @@ export const ProductPage = () => {
 		)
 	}
 }
+export default ProductPage
