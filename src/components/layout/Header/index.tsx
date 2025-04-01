@@ -5,7 +5,7 @@ import { Navigation } from './components/Navigation'
 
 const Header = () => {
 	return (
-		<header className="flex justify-between px-14 py-8">
+		<header className="flex justify-between gap-12 px-14 py-8">
 			<Link
 				to="/"
 				className="flex items-center"

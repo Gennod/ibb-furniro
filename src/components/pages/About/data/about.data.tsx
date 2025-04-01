@@ -1,4 +1,4 @@
-import { Cpu, Figma, Github, Palette } from 'lucide-react'
+import { Activity, Cpu, Figma, Github, Palette } from 'lucide-react'
 
 export const tech = [
 	{
@@ -20,6 +20,10 @@ export const tech = [
 	{
 		icon: <Palette />,
 		title: 'Lucide react'
+	},
+	{
+		icon: <Activity />,
+		title: 'Motion'
 	}
 ]
 

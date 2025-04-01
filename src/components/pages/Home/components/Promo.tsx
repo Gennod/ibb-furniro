@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export const Promo = () => {
 	return (
 		<div className="flex justify-end bg-[url(/promo/bg.jpg)] px-10 pt-32 pb-28">
@@ -13,9 +15,12 @@ export const Promo = () => {
 							tellus, luctus nec ullamcorper mattis.
 						</p>
 					</div>
-					<button className="mt-9 cursor-pointer bg-(--color-primary) px-16 py-6 text-white transition active:scale-95">
+					<Link
+						to="/shop"
+						className="mt-9 inline-block cursor-pointer bg-(--color-primary) px-16 py-6 text-white transition active:scale-95"
+					>
 						BUY NOW
-					</button>
+					</Link>
 				</div>
 			</div>
 		</div>

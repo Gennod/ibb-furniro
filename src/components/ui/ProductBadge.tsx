@@ -51,7 +51,7 @@ export default function ProductBadge() {
 						}}
 						aria-label="reduce"
 						onClick={() => {
-							setCount(Math.max(count - 1, 0))
+							setCount(Math.max(count - 1, 1))
 						}}
 					>
 						<Minus fontSize="small" />

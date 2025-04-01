@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
 import { fetchProductById } from '../../../store/reducers/products'
+import { getTagColor } from '../../../utils/getTagColor'
 import ProductBadge from '../../ui/ProductBadge'
 import { ProductSkeleton } from '../../ui/ProductsComponents/ProductSkeleton'
 
@@ -65,6 +66,18 @@ export const ProductPage = () => {
 							{product.price}$
 						</div>
 					</div>
+					<ul className="mt-2 flex flex-wrap gap-2 text-(--color-primary)">
+						{product.tags.map(tag => (
+							<li key={tag}>
+								<button
+									value={tag}
+									className={`rounded-full px-2 py-1 text-xs ${getTagColor(tag)}`}
+								>
+									{tag}
+								</button>
+							</li>
+						))}
+					</ul>
 					<Rating
 						className="my-4"
 						name="half-rating-read"

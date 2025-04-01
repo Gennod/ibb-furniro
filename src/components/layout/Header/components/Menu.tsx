@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 
 import { useAppSelector } from '../../../../store/hooks'
 import SearchField from '../../../ui/SearchField'
-import { icons } from '../data/constants'
 
 export const Menu = () => {
 	const { cartProducts, products } = useAppSelector(state => state.products)
@@ -16,14 +15,9 @@ export const Menu = () => {
 	}
 
 	return (
-		<ul className="flex items-center gap-12">
-			{icons.map(icon => (
-				<MenuItem
-					key={icon.id}
-					src={icon.iconSrc}
-					alt={icon.iconAlt}
-				/>
-			))}
+		<ul
+			className={`flex max-w-[450px] grow items-center justify-end gap-12 ${isSearchOpen ? '' : ''}`}
+		>
 			<li
 				className={`flex items-center overflow-hidden ${isSearchOpen ? 'grow' : ''}`}
 			>
@@ -40,6 +34,15 @@ export const Menu = () => {
 				)}
 			</li>
 			<li className="flex items-center">
+				<button className="cursor-pointer">
+					<img
+						className="h-6 w-6"
+						src="/header/heart.svg"
+						alt="heart"
+					/>
+				</button>
+			</li>
+			<li className="flex items-center">
 				<Link
 					to="/cart"
 					className="cursor-pointer"
@@ -53,24 +56,5 @@ export const Menu = () => {
 				</Link>
 			</li>
 		</ul>
-	)
-}
-
-interface MenuItemProps {
-	src: string
-	alt: string
-}
-
-export const MenuItem: React.FC<MenuItemProps> = ({ src, alt }) => {
-	return (
-		<li className="flex items-center">
-			<button className="cursor-pointer">
-				<img
-					className="h-6 w-6"
-					src={src}
-					alt={alt}
-				/>
-			</button>
-		</li>
 	)
 }
