@@ -29,6 +29,7 @@
 - ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 - ![Lucide React](https://img.shields.io/badge/Lucide_React-F56565?style=for-the-badge)
 - ![Framer Motion](https://img.shields.io/badge/Motion-EF2D5E?style=for-the-badge&logo=framer&logoColor=white)
+- ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
 - ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 
 ## Установка и запуск
