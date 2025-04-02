@@ -4,9 +4,10 @@
 созданную в учебных целях для тренировки профессиональных навыков в
 веб-разработке. Сайт не является реальным торговым сервисом.
 
-Информация о товарах получена через
-[DummyJSON API](https://dummyjson.com/products) Дизайн -
-[eCommerce Website](https://www.figma.com/community/file/1252561852327562039/ecommerce-website-web-page-design-ui-kit-interior-landing-page)
+- Информация о товарах получена через
+  [DummyJSON API](https://dummyjson.com/products)
+- Дизайн -
+  [eCommerce Website](https://www.figma.com/community/file/1252561852327562039/ecommerce-website-web-page-design-ui-kit-interior-landing-page)
 
 ## Функционал
 
