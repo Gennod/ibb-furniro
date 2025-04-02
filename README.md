@@ -58,3 +58,103 @@ npm run dev
 
 Посмотреть работающее приложение можно здесь:
 [IBB-FURNIRO](https://ibb-furniro.netlify.app)
+
+## Структура проекта
+
+```
+├── .gitignore
+├── .prettierrc
+├── README.md
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── public
+    ├── header
+    │   ├── cart.svg
+    │   ├── heart.svg
+    │   ├── search.svg
+    │   └── user.svg
+    ├── icon.svg
+    ├── netlify.toml
+    ├── promo
+    │   └── bg.jpg
+    └── shop
+    │   └── bg.jpg
+├── src
+    ├── assets
+    │   └── react.svg
+    ├── components
+    │   ├── layout
+    │   │   ├── Footer
+    │   │   │   ├── data
+    │   │   │   │   └── constants.ts
+    │   │   │   └── index.tsx
+    │   │   └── Header
+    │   │   │   ├── components
+    │   │   │       ├── Menu.tsx
+    │   │   │       └── Navigation.tsx
+    │   │   │   ├── data
+    │   │   │       └── constants.ts
+    │   │   │   └── index.tsx
+    │   ├── pages
+    │   │   ├── About
+    │   │   │   ├── components
+    │   │   │   │   ├── AboutDesign.tsx
+    │   │   │   │   └── TechStack.tsx
+    │   │   │   ├── data
+    │   │   │   │   └── about.data.tsx
+    │   │   │   └── index.tsx
+    │   │   ├── Cart
+    │   │   │   └── index.tsx
+    │   │   ├── Contact
+    │   │   │   ├── components
+    │   │   │   │   ├── ContactForm.tsx
+    │   │   │   │   └── Contacts.tsx
+    │   │   │   ├── data
+    │   │   │   │   └── contact.data.tsx
+    │   │   │   └── index.tsx
+    │   │   ├── Home
+    │   │   │   ├── components
+    │   │   │   │   └── Promo.tsx
+    │   │   │   └── index.tsx
+    │   │   ├── ProductPage
+    │   │   │   └── ProductPage.tsx
+    │   │   └── Shop
+    │   │   │   ├── components
+    │   │   │       └── ShopFilter.tsx
+    │   │   │   └── index.tsx
+    │   └── ui
+    │   │   ├── Loader.tsx
+    │   │   ├── Pagination.tsx
+    │   │   ├── ProductBadge.tsx
+    │   │   ├── Products.tsx
+    │   │   ├── ProductsComponents
+    │   │       ├── ProductItem.tsx
+    │   │       ├── ProductSkeleton.tsx
+    │   │       └── ProductsSkeleton.tsx
+    │   │   ├── SearchField.tsx
+    │   │   ├── Select.tsx
+    │   │   ├── SelectComponents
+    │   │       ├── ShowSelect.tsx
+    │   │       ├── SortSelect.tsx
+    │   │       └── TagSelect.tsx
+    │   │   └── breadcrumbs.tsx
+    ├── index.css
+    ├── main.tsx
+    ├── store
+    │   ├── hooks.ts
+    │   ├── index.ts
+    │   └── reducers
+    │   │   ├── page.ts
+    │   │   └── products.ts
+    ├── types.ts
+    ├── utils
+    │   └── getTagColor.ts
+    └── vite-env.d.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+
+```
