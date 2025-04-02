@@ -7,7 +7,7 @@ import { useAppSelector } from '../../../../store/hooks'
 import SearchField from '../../../ui/SearchField'
 
 export const Menu = () => {
-	const { cartProducts, products } = useAppSelector(state => state.products)
+	const { cartProducts } = useAppSelector(state => state.products)
 	const [isSearchOpen, setIsSearchOpen] = useState(false)
 
 	const toggleSearch = () => {

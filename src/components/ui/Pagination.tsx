@@ -14,7 +14,7 @@ const ProductsPagination = () => {
 	const totalPages = Math.ceil(filteredProducts.length / limit)
 
 	const handlePageChange = (
-		event: React.ChangeEvent<unknown>,
+		_event: React.ChangeEvent<unknown>,
 		page: number
 	) => {
 		dispatch(setCurrentPage(page))

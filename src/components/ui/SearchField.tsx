@@ -30,7 +30,7 @@ export default function SearchField({
 	)
 
 	const handleProductSelect = (
-		event: SyntheticEvent,
+		_event: SyntheticEvent,
 		value: ProductOption | null
 	) => {
 		if (value) {
